@@ -19,6 +19,13 @@ This script uses the following datasets
 * train/Y_train.txt 
     * training subjects
 
+## run_analsys.R steps
+* load the UCI datasets
+* extracts the variables containsing mean() or std()
+* applies the features names to the training/test datasets and select only mean()/std() variables
+* inner_joins the activity label dataset to the training/test datasets
+* merge the subject id to the all_gyro set, group by activity and subject and summarize the average for each varabiel
+* write the summarized result to tidy_summary.txt
 
 
 ### Variables
