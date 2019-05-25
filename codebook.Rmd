@@ -1,0 +1,22 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+source("run_analysis.R", chdir = TRUE)
+```
+
+The mean/standard deviation data.
+
+```{r}
+print(acc_gyro)
+```
+
+
+The summarized mean of all mean and standard deviation variables grouped by activity and subject.
+
+```{r}
+print(acc_gyro_means_by_activty_subject)
+```
+
