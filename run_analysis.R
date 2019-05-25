@@ -44,7 +44,6 @@ trainActivities = read.table("train/y_train.txt") %>%
 train = bind_cols(trainActivities,trainFeatures)
 
 
-
 #union the test and training data
 acc_gyro = bind_rows(test,train) %>%
   inner_join(activities, by = c("activity.id" = "activity.id")) %>%
@@ -58,13 +57,25 @@ allsubjects = bind_rows(read.table("test/subject_test.txt"),read.table("train/su
   as_tibble() %>%
   rename(subject.id = 1)
 
-acc_gyro_means_by_activty_subject = bind_cols(allsubjects, acc_gyro) %>%
+all = bind_cols(allsubjects, acc_gyro)
+
+#wide-format
+acc_gyro_means_by_activty_subject = all %>%
   group_by(activity,subject.id) %>%
   summarise_all(mean)
+
+#long-format
+melted = gather(all,variable,measurement,-subject.id,-activity.id,-activity)
+
+means_by_activity_subject = melted %>% 
+  group_by(subject.id,activity.id,activity,variable) %>%
+  summarise(average = mean(measurement))
+  
 
 #remove intermediate datasets
 rm(list = c("allsubjects"))
 
 #write tidy set to txt file
-write.table(acc_gyro_means_by_activty_subject,file = "tidy_summary.txt", row.names = FALSE)
+#write.table(acc_gyro_means_by_activty_subject,file = "tidy_wide_format_summary.txt", row.names = FALSE)
+write.table(means_by_activity_subject,file = "tidy_long_format_summary.txt", row.names = FALSE)
 

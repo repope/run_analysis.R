@@ -2,7 +2,7 @@
 See [the HAR site](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) for details of the source datasets.
 
 ## Summary
-The script creates two datasets, acc_gyro and acc_gyro_means_by_activty_subject, using data fro the UCI HAR dataset of acceleration and gyroscope measurements. Both datasets contain the 66 variables listed below. acc_gyro shows the original measurements and acc_gyro_means_by_activity_subject calculates the mean of each variable, grouped by both activity and subject. See [the notebook](codebook.nb.html) for output of the script.
+The script creates two datasets, acc_gyro and means_by_activty_subject, using data fro the UCI HAR dataset of acceleration and gyroscope measurements. acc_gyro contains the 66 variables listed below and means_by_activity melts them into a summary dataset showing their average by activity and subject. See [the notebook](codebook.nb.html) for output of the script.
 
 ## run_analysis.R
 This script uses the following datasets
@@ -24,11 +24,19 @@ This script uses the following datasets
 * extracts the variables containsing mean() or std()
 * applies the features names to the training/test datasets and select only mean()/std() variables
 * inner_joins the activity label dataset to the training/test datasets
-* merge the subject id to the all_gyro set, group by activity and subject and summarize the average for each varabiel
-* write the summarized result to tidy_summary.txt
+* merge the subject id to the all_gyro set
+* melt the data and group by activity and subject and summarize the average for each variable
+* write the summarized result to tidy_long_format_summary.txt
+
+## Summarized Variables
+* subject.id: id of the subject under observation
+* activity.id: id of the activity performed by subject
+* activity: descriptive label of the activity
+* variable: one of the source variables measured.
+* average: mean of the measurement by activity and subject
 
 
-### Variables
+### Source Variables
 * tBodyAcc-mean()-X
 * tBodyAcc-mean()-Y
 * tBodyAcc-mean()-Z

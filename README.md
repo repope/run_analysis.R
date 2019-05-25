@@ -4,7 +4,7 @@ The included R script, run_analysis.R will clean and tidy the data from the test
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-Download and unzip the dataset into the same directory as the script and run it. It will create two datasets, one containing all the mean and standard deviation variables for each activity and one containing summarized means of each variable grouped by activity and subject. The summarized dataset will be written to a text file named 'tidy_summary.txt'.
+Download and unzip the dataset into the same directory as the script and run it. It will create two datasets, one containing all the mean and standard deviation variables for each activity and one containing summarized means of each variable grouped by activity and subject. The summarized dataset will be written to a text file named 'tidy_long_format_summary.txt'.
 
 ```R
 source("run_analysis.R", chdir = TRUE)

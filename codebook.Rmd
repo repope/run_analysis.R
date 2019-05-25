@@ -7,14 +7,21 @@ output: html_notebook
 source("run_analysis.R", chdir = TRUE)
 ```
 
-The mean/standard deviation data.
+The mean/standard deviation data for each subject
 
 ```{r}
-print(acc_gyro)
+print(all)
 ```
 
 
 The summarized mean of all mean and standard deviation variables grouped by activity and subject.
+
+```{r}
+print(means_by_activity_subject)
+```
+
+
+The same summary again, but in wide format
 
 ```{r}
 print(acc_gyro_means_by_activty_subject)
