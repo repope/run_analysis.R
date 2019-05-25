@@ -65,4 +65,6 @@ acc_gyro_means_by_activty_subject = bind_cols(allsubjects, acc_gyro) %>%
 #remove intermediate datasets
 rm(list = c("allsubjects"))
 
+#write tidy set to txt file
+write.table(acc_gyro_means_by_activty_subject,file = "tidy_summary.txt", row.names = FALSE)
 
